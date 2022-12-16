@@ -1,0 +1,202 @@
+body{
+  font: 20px Helvetica, Arial;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+::placeholder {
+  color: #000000;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #000000;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #000000;
+}
+
+
+@font-face {
+  font-family: 'Krasar';
+  src: url("Krasar.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+label{
+  font-family: 'Krasar';
+  font-size: 18px;
+}
+h3{
+  color: #1876f2;
+}
+.card{
+  background: #fff;
+}
+.back{
+  margin-left: 2%;
+  }
+
+form{
+  width: 40%;
+  /* float: left; */
+}
+.container{
+  width: 50%;
+  float: left;
+  margin-top: 1em;
+  color:#000;
+  text-align: center;
+  background: #ffffff;
+  display: none;
+}
+
+select {
+  border:1px solid a7a7a7;
+  /* vertical-align:top; */
+  height:40px;
+  padding: 5px;
+
+}
+
+input{
+  padding: 9px;
+}
+
+
+.styled-select select {
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
+}
+
+input, select{
+  color:#000;
+  background-color: #ffffff;
+  display: table;
+  margin-bottom: 1em;
+  width: 95%;
+  font-size: 16px;
+  border: 1px solid #a7a7a7;
+  border-radius: 5px;
+  
+  font-family: 'Krasar';
+  height:40px;
+
+  box-sizing: border-box;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+}
+
+
+#file{
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+.upload, button{
+  color: #fff;
+  background: #1876f2;
+  padding: 10px;
+  border: 2px solid #1876f2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+form span{
+  font-size: 12px;
+}
+#preview{
+  font-size: 16px;
+  margin-top: 0em;
+  margin-left: 1.2em;
+
+}
+
+
+#result{
+  position: relative;
+  width: 100%;
+  margin-left: 0%;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  margin-bottom: 1em;
+  background-color: #fff;
+}
+header{
+  width: 100%;
+  background: #159;
+
+  border-radius: 12px 12px 0 0 ;
+}
+header::after{
+  content: "";
+  display: flex;
+  clear: both;
+}
+.camp{
+  width: 40%;
+  float: left;
+  color: #fff;
+}
+.camp h4{
+  margin: 12px auto 0 7px;
+}
+.camp span{
+  margin-left: 8px;
+}
+#logo{
+  width: 150px;
+  height: 80px;
+  float: right;
+}
+Now we get into the content part
+.content{
+  width: 80%;
+}
+.content::after{
+  content: "";
+  display: flex;
+  clear: both;
+}
+.content img{
+  float: left;
+  width: 80px;
+  height: 105px;
+  margin-left: 7px;
+  margin-top: 12px;
+
+}
+.content ul{
+  width: 50%;
+  float: left;
+  padding-left: 15px;
+}
+ul li{
+  list-style-type: none;
+}
+
+#down{
+  font-size: 18px;
+}
+@media only screen and (max-width:768px) {
+  .container, form{
+    width: 90%;
+    margin-left: 5%;
+  }
+  #result{
+    margin-left: 0;
+    margin-right: 5%;
+  }
+  #down{
+    margin-right: 2em;
+    margin-bottom: 2em;
+  }
+
+}

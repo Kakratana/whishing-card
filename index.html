@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Absence Form</title>
+</head>
+<body>
+  
+
+  <div class="back" id="form">
+    <form>
+      <h3>Happy New Year Card</h3>
+      <input type="text" id="inName" lang="km" placeholder="ឈ្មោះអតិថិជន">
+
+    </form>  
+    
+      <button type="submit" id="preview">Preview</button>
+    
+    
+  </div>
+    
+
+    </body>
+    <div class="container" id="show">
+      <canvas id="result" width="1280px" height="1280px">
+        <header id="head">
+          <div class="camp">
+            <h4>Campus Card</h4>
+            <span>Undergraduate</span>
+          </div>
+          <img src="./2023.jpg" id="logo"  >
+        </header>
+
+        <div class="content">
+          <img src="" id="imgDisplayed">
+          <ul>
+            <li id="name"></li>
+          </ul>
+        </div>
+
+      </canvas>        
+      <button style="margin-right: auto; margin-left: auto;" id="down">Download</button>
+    </div>
+	
+
+    <script>
+      window.addEventListener("load", function(){
+      const d = new Date();
+      let month = d.getMonth();
+        switch(month) {
+        case 0:
+           document.getElementById("inMonthF").defaultValue = "មករា";
+         document.getElementById("inMonthT").defaultValue = "មករា";
+         document.getElementById("inMonthI").defaultValue = "មករា";
+          break;
+        case 1:
+           document.getElementById("inMonthF").defaultValue = "កុម្ភៈ";
+         document.getElementById("inMonthT").defaultValue = "កុម្ភៈ";
+         document.getElementById("inMonthI").defaultValue = "កុម្ភៈ";
+          break;
+        case 2:
+           document.getElementById("inMonthF").defaultValue = "មីនា";
+         document.getElementById("inMonthT").defaultValue = "មីនា";
+         document.getElementById("inMonthI").defaultValue = "មីនា";
+          break;
+        case 3:
+           document.getElementById("inMonthF").defaultValue = "មេសា";
+         document.getElementById("inMonthT").defaultValue = "មេសា";
+         document.getElementById("inMonthI").defaultValue = "មេសា";
+          break;
+        case 4:
+           document.getElementById("inMonthF").defaultValue = "ឧសភា";
+         document.getElementById("inMonthT").defaultValue = "ឧសភា";
+         document.getElementById("inMonthI").defaultValue = "ឧសភា";
+          break;
+        case 5:
+           document.getElementById("inMonthF").defaultValue = "មិថុនា";
+         document.getElementById("inMonthT").defaultValue = "មិថុនា";
+         document.getElementById("inMonthI").defaultValue = "មិថុនា";
+          break;
+        case 6:
+           document.getElementById("inMonthF").defaultValue = "កក្កដា";
+         document.getElementById("inMonthT").defaultValue = "កក្កដា";
+         document.getElementById("inMonthI").defaultValue = "កក្កដា";
+          break;
+        case 7:
+           document.getElementById("inMonthF").defaultValue = "សីហា";
+         document.getElementById("inMonthT").defaultValue = "សីហា";
+         document.getElementById("inMonthI").defaultValue = "សីហា";
+          break;
+        case 8:
+           document.getElementById("inMonthF").defaultValue = "កញ្ញា";
+         document.getElementById("inMonthT").defaultValue = "កញ្ញា";
+         document.getElementById("inMonthI").defaultValue = "កញ្ញា";
+          break;
+        case 9:
+           document.getElementById("inMonthF").defaultValue = "តុលា";
+         document.getElementById("inMonthT").defaultValue = "តុលា";
+         document.getElementById("inMonthI").defaultValue = "តុលា";
+          break;
+        case 10:
+         document.getElementById("inMonthF").defaultValue = "វិច្ឆិកា";
+         document.getElementById("inMonthT").defaultValue = "វិច្ឆិកា";
+         document.getElementById("inMonthI").defaultValue = "វិច្ឆិកា";
+          break;
+        default:
+         document.getElementById("inMonthF").defaultValue = "ធ្នូ";
+         document.getElementById("inMonthT").defaultValue = "ធ្នូ";
+         document.getElementById("inMonthI").defaultValue = "ធ្នូ";
+      }
+      });
+      </script>
+	  
+      <script>
+        var inSex = document.getElementById('inSex');
+        inSex.onchange = function () {
+        inSex.className = this.options[this.selectedIndex].className;
+        }
+      </script>
+	  
+	  
+	<script src="main.js"></script>
+
+
+</body>
+</html>
