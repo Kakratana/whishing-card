@@ -10,7 +10,7 @@ const image = document.getElementById("imgDisplayed");
 const logo = document.getElementById("logo");
 
 function prev(){
-	  ctx.font = "14px Krasar";
+	  ctx.font = "14px Moul";
       var x = document.getElementById("form");
       x.style.display = "none";
 
