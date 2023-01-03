@@ -35,7 +35,7 @@ function prev(){
       // ctx.fillRect(0, 750, 800, 50);
       ctx.fillStyle = "#1876f2";
 
-    ctx.drawImage(logo, 0, 0, 1748, 2480); //last size: 1280x1280
+    ctx.drawImage(logo, 0, 0, 1280, 1816); //last size: 1280x1280
 
     //ctx.font = '34pt Moul'; 
     //ctx.fillStyle = "#fe4f27";
@@ -44,7 +44,7 @@ function prev(){
 
     function drawStroked(text, x, y) {
         ctx.textAlign = "center"; 
-        ctx.font = '54px Moul';
+        ctx.font = '50px Moul';
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 6;
         ctx.strokeText(text, x, y);
@@ -52,7 +52,7 @@ function prev(){
         ctx.fillText(text, x, y);
     }
 
-    drawStroked(name.innerHTML, 874, 1250); //last value 640, 670
+    drawStroked(name.innerHTML, 640, 925); //last value 640, 670
 
 
 
