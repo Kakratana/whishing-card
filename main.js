@@ -27,13 +27,13 @@ function prev(){
       name.innerHTML = inName;
 
       
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, 800, 900);
-      ctx.fillStyle = "#1876f2";
-      ctx.fillRect(0, 0, 800, 100);
+     // ctx.fillStyle = "#ffffff";
+     // ctx.fillRect(0, 0, 800, 900);
+      //ctx.fillStyle = "#1876f2";
+     // ctx.fillRect(0, 0, 800, 100);
       // ctx.fillStyle = "#f1f3f4";
       // ctx.fillRect(0, 750, 800, 50);
-      ctx.fillStyle = "#1876f2";
+      //ctx.fillStyle = "#1876f2";
 
     ctx.drawImage(logo, 0, 0, 1280, 1816); //last size: 1280x1280
 
