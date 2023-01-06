@@ -1,4 +1,4 @@
-const canvas = document.getElementById("result");
+﻿const canvas = document.getElementById("result");
 const preview = document.getElementById("preview");
 preview.addEventListener("click", prev);
 
@@ -77,5 +77,25 @@ download.addEventListener("click", function(){
     document.body.removeChild(a);
   }
 });
+
+async function onShares() {
+
+    const dataUrl = canvas.toDataURL();
+    const blob = await (await fetch(dataUrl)).blob();
+    const filesArray = [
+        new File(
+            [blob],
+            'Card.png',
+            {
+                type: blob.type,
+                lastModified: new Date().getTime()
+            }
+        )
+    ];
+    const shareData = {
+        files: filesArray
+    };
+    navigator.share(shareData);
+}
 
 
