@@ -35,6 +35,7 @@ function prev(){
       // ctx.fillRect(0, 750, 800, 50);
       //ctx.fillStyle = "#1876f2";
 
+
     ctx.drawImage(logo, 0, 0, 1037, 1280); //last size: 1280x1280
 
     //ctx.font = '34pt Moul'; 
