@@ -45,11 +45,11 @@ function prev(){
 
     function drawStroked(text, x, y) {
         ctx.textAlign = "center"; 
-        ctx.font = '33px Moul';
+        ctx.font = '34px Moul';
         ctx.strokeStyle = 'white';
-        ctx.lineWidth = 6;
+        ctx.lineWidth = 0;
         ctx.strokeText(text, x, y);
-        ctx.fillStyle = "#067606";
+        ctx.fillStyle = "#009400";
         ctx.fillText(text, x, y);
     }
 
