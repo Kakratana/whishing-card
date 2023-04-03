@@ -36,24 +36,24 @@ function prev(){
       //ctx.fillStyle = "#1876f2";
 
 
-    ctx.drawImage(logo, 0, 0, 1037, 1280); //last size: 1280x1280
+    ctx.drawImage(logo, 0, 0, 1280, 1280); //last size: 1280x1280
 
-    //ctx.font = '34pt Moul'; 
-    //ctx.fillStyle = "#fe4f27";
-    //ctx.textAlign = "center";   
-    //ctx.fillText(name.innerHTML, 640, 670);
+    ctx.font = '32pt Moul'; 
+    ctx.fillStyle = "#e8e614";
+    ctx.textAlign = "center";   
+    ctx.fillText(name.innerHTML, 640, 670);
 
-    function drawStroked(text, x, y) {
-        ctx.textAlign = "center"; 
-        ctx.font = '34px Moul';
-        ctx.strokeStyle = 'white';
-        ctx.lineWidth = 0;
-        ctx.strokeText(text, x, y);
-        ctx.fillStyle = "#009400";
-        ctx.fillText(text, x, y);
-    }
+    //function drawStroked(text, x, y) {
+       // ctx.textAlign = "center"; 
+       // ctx.font = '42px Moul';
+      //  ctx.strokeStyle = 'white';
+       // ctx.lineWidth = 0;
+    //    ctx.strokeText(text, x, y);
+      //  ctx.fillStyle = "#e8e614";
+      //  ctx.fillText(text, x, y);
+  //  }
 
-    drawStroked(name.innerHTML, 518.5, 660); //last value 640, 670
+    //drawStroked(name.innerHTML, 518.5, 660); //last value 640, 670
 
 
 
