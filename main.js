@@ -39,7 +39,7 @@ function prev(){
     ctx.drawImage(logo, 0, 0, 1280, 1280); //last size: 1280x1280
 
     ctx.font = '32pt Moul'; 
-    ctx.fillStyle = "#FFFF00";
+    ctx.fillStyle = "#ff6000";
     ctx.textAlign = "center";   
     ctx.fillText(name.innerHTML, 640, 670);
 
