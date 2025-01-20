@@ -24,6 +24,7 @@ function prev(){
       const name = document.getElementById("name");
 
 
+
       name.innerHTML = inName;
 
       

@@ -16,18 +16,47 @@
     </style>
 
 </head>
+<script>
+    async function handleForm(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const formData = new FormData(event.target);
+
+      // Send form data using Fetch API
+      try {
+        const response = await fetch(event.target.action, {
+          method: event.target.method,
+          body: formData,
+        });
+
+        if (response.ok) {
+          // Handle success
+          console.log("Form submitted successfully!");
+          alert("Form submitted successfully!");
+        } else {
+          // Handle error
+          console.error("Error submitting form");
+          alert("Failed to submit the form.");
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+        // alert("An error occurred. Please try again.");
+      }
+    }
+  </script>
 <body>
 
 
     <div class="back" id="form">
-        <form>
+        <form onsubmit="handleForm(event)" action="https://docs.google.com/forms/d/e/1FAIpQLScnM7oYJS6iz1jGM_bRP649dM_IO6KqkFNgsbCruTZ4K6Gozw/formResponse" method="POST">
             <h3>Wishing Card Generator</h3>
-            <input type="text" id="inName" lang="km" placeholder="ឈ្មោះអតិថិជន">
+            <input name="entry.519597344" type="text" id="inSender" lang="km" placeholder="ឈ្មោះអ្នក​ផ្ញើ">
+            <input name="entry.616568867" type="text" id="inName" lang="km" placeholder="ឈ្មោះអតិថិជន">
 
-
+            <button type="submit" id="preview">Preview <i class="fa fa-eye" aria-hidden="true"></i></button>
         </form>
 
-        <button type="submit" id="preview">Preview <i class="fa fa-eye" aria-hidden="true"></i></button>
+        
 
 
     </div>
