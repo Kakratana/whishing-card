@@ -86,7 +86,7 @@ input, select{
   border: 1px solid #a7a7a7;
   border-radius: 5px;
   
-  font-family: 'Moul';
+  /* font-family: 'Moul'; */
   height:40px;
 
   box-sizing: border-box;
