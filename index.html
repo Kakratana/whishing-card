@@ -7,14 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Wishing Card</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Moul&display=swap');
-    </style>
-
 </head>
 <script>
     async function handleForm(event) {
@@ -45,120 +38,32 @@
     }
   </script>
 <body>
-
-
     <div class="back" id="form">
         <form onsubmit="handleForm(event)" action="https://docs.google.com/forms/d/e/1FAIpQLScnM7oYJS6iz1jGM_bRP649dM_IO6KqkFNgsbCruTZ4K6Gozw/formResponse" method="POST">
             <h3>Wishing Card Generator</h3>
             <input name="entry.519597344" type="text" id="inSender" lang="km" placeholder="ឈ្មោះអ្នក​ផ្ញើ">
             <input name="entry.616568867" type="text" id="inName" lang="km" placeholder="ឈ្មោះអតិថិជន">
-
             <button type="submit" id="preview">Preview <i class="fa fa-eye" aria-hidden="true"></i></button>
         </form>
     </div>
-
-
     <div hidden>
         <ul>
             <li id="name"></li>
-            <li id="sex"></li>
-            <li id="position"></li>
-            <li id="days"></li>
-            <li id="datef"></li>
-            <li id="datet"></li>
-            <li id="datei"></li>
-            <li id="reason"></li>
         </ul>
         <img src="./CYN2025.jpg" id="logo">
     </div>
-  
-
     <div class="container" id="show">
         <canvas id="result" width="1280" height="1280">
         </canvas>
         <button style="margin-right: auto; margin-left: auto;" id="down"> Download <i class="fa fa-download" aria-hidden="true"></i></button>&nbsp;
         <button style="font-size: 18px; margin-right: auto; margin-left: auto;" onClick="onShares()">Share Image <i class="fa fa-share" aria-hidden="true"></i></button>
     </div>
-
-
-    <script>
-        window.addEventListener("load", function () {
-            const d = new Date();
-            let month = d.getMonth();
-            switch (month) {
-                case 0:
-                    document.getElementById("inMonthF").defaultValue = "មករា";
-                    document.getElementById("inMonthT").defaultValue = "មករា";
-                    document.getElementById("inMonthI").defaultValue = "មករា";
-                    break;
-                case 1:
-                    document.getElementById("inMonthF").defaultValue = "កុម្ភៈ";
-                    document.getElementById("inMonthT").defaultValue = "កុម្ភៈ";
-                    document.getElementById("inMonthI").defaultValue = "កុម្ភៈ";
-                    break;
-                case 2:
-                    document.getElementById("inMonthF").defaultValue = "មីនា";
-                    document.getElementById("inMonthT").defaultValue = "មីនា";
-                    document.getElementById("inMonthI").defaultValue = "មីនា";
-                    break;
-                case 3:
-                    document.getElementById("inMonthF").defaultValue = "មេសា";
-                    document.getElementById("inMonthT").defaultValue = "មេសា";
-                    document.getElementById("inMonthI").defaultValue = "មេសា";
-                    break;
-                case 4:
-                    document.getElementById("inMonthF").defaultValue = "ឧសភា";
-                    document.getElementById("inMonthT").defaultValue = "ឧសភា";
-                    document.getElementById("inMonthI").defaultValue = "ឧសភា";
-                    break;
-                case 5:
-                    document.getElementById("inMonthF").defaultValue = "មិថុនា";
-                    document.getElementById("inMonthT").defaultValue = "មិថុនា";
-                    document.getElementById("inMonthI").defaultValue = "មិថុនា";
-                    break;
-                case 6:
-                    document.getElementById("inMonthF").defaultValue = "កក្កដា";
-                    document.getElementById("inMonthT").defaultValue = "កក្កដា";
-                    document.getElementById("inMonthI").defaultValue = "កក្កដា";
-                    break;
-                case 7:
-                    document.getElementById("inMonthF").defaultValue = "សីហា";
-                    document.getElementById("inMonthT").defaultValue = "សីហា";
-                    document.getElementById("inMonthI").defaultValue = "សីហា";
-                    break;
-                case 8:
-                    document.getElementById("inMonthF").defaultValue = "កញ្ញា";
-                    document.getElementById("inMonthT").defaultValue = "កញ្ញា";
-                    document.getElementById("inMonthI").defaultValue = "កញ្ញា";
-                    break;
-                case 9:
-                    document.getElementById("inMonthF").defaultValue = "តុលា";
-                    document.getElementById("inMonthT").defaultValue = "តុលា";
-                    document.getElementById("inMonthI").defaultValue = "តុលា";
-                    break;
-                case 10:
-                    document.getElementById("inMonthF").defaultValue = "វិច្ឆិកា";
-                    document.getElementById("inMonthT").defaultValue = "វិច្ឆិកា";
-                    document.getElementById("inMonthI").defaultValue = "វិច្ឆិកា";
-                    break;
-                default:
-                    document.getElementById("inMonthF").defaultValue = "ធ្នូ";
-                    document.getElementById("inMonthT").defaultValue = "ធ្នូ";
-                    document.getElementById("inMonthI").defaultValue = "ធ្នូ";
-            }
-        });
-    </script>
-
     <script>
         var inSex = document.getElementById('inSex');
         inSex.onchange = function () {
             inSex.className = this.options[this.selectedIndex].className;
         }
     </script>
-
-
     <script src="main.js"></script>
-
-
 </body>
 </html>

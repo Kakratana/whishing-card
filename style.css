@@ -23,14 +23,14 @@ input:focus::placeholder {
 }
 
 
-@font-face {
+/* @font-face {
   font-family: 'Moul';
   src: url("Moul.woff") format('woff');
   font-weight: normal;
   font-style: normal;
-}
+} */
 label{
-  font-family: 'Moul';
+  font-family: "Moul";
   font-size: 18px;
 }
 h3{
@@ -86,7 +86,7 @@ input, select{
   border: 1px solid #a7a7a7;
   border-radius: 5px;
   
-  /* font-family: 'Moul'; */
+  font-family: 'Moul';
   height:40px;
 
   box-sizing: border-box;
