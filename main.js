@@ -30,7 +30,7 @@ function prev(){
     ctx.lineJoin = 'round';
     
     // Draw the stroke first with the desired color and width.
-    ctx.strokeStyle = "#b60606";
+    ctx.strokeStyle = "#c50806";
     ctx.lineWidth = 10; // Use a larger lineWidth to compensate for the fill covering half of it.
     ctx.strokeText(name.innerHTML, 640, 670);
     
