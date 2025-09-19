@@ -21,21 +21,21 @@ function prev(){
 
     ctx.drawImage(logo, 0, 0, 1280, 1280);
 
-    // ctx.font = "40px 'Moul'"; 
-    // ctx.fillStyle = "#fff200";
-    // ctx.textAlign = "center";   
-    // ctx.fillText(name.innerHTML, 640, 670);
+    ctx.font = "40px 'Moul'"; 
+    ctx.fillStyle = "#fff200";
+    ctx.textAlign = "center";   
+    ctx.fillText(name.innerHTML, 640, 670);
     
     // Draw the stroke first with the desired color and width.
-ctx.strokeStyle = "#b60606";
-ctx.lineWidth = 10; // Use a larger lineWidth to compensate for the fill covering half of it.
-ctx.strokeText(name.innerHTML, 640, 670);
-
-// Then, draw the fill text on top of the stroke.
-ctx.font = "40px 'Moul'"; 
-ctx.fillStyle = "#fff200";
-ctx.textAlign = "center";  
-ctx.fillText(name.innerHTML, 640, 670);
+    ctx.strokeStyle = "#b60606";
+    ctx.lineWidth = 10; // Use a larger lineWidth to compensate for the fill covering half of it.
+    ctx.strokeText(name.innerHTML, 640, 670);
+    
+    // Then, draw the fill text on top of the stroke.
+    ctx.font = "40px 'Moul'"; 
+    ctx.fillStyle = "#fff200";
+    ctx.textAlign = "center";  
+    ctx.fillText(name.innerHTML, 640, 670);
 }
 
 const download = document.getElementById("down");
