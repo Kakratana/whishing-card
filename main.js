@@ -25,6 +25,11 @@ function prev(){
     ctx.fillStyle = "#fff200";
     ctx.textAlign = "center";   
     ctx.fillText(name.innerHTML, 640, 670);
+    
+    // Add the stroke
+    ctx.strokeStyle = "#b60606"; // Sets the stroke color to red (#b60606)
+    ctx.lineWidth = 5; // Sets the stroke width to 5px
+    ctx.strokeText(name.innerHTML, 640, 670); // Applies the stroke to the text
 }
 
 const download = document.getElementById("down");
