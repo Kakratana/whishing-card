@@ -23,9 +23,9 @@ function prev(){
 
     ctx.font = "26px 'Moul'"; 
     // ctx.fillStyle = "#fff200";
-    ctx.fillStyle = "#000000";
+    ctx.fillStyle = "#cc9933";
     ctx.textAlign = "center";   
-    ctx.fillText(name.innerHTML, 312, 615);
+    ctx.fillText(name.innerHTML, 312, 612);
 
     // // Set line join to round for the stroke
     // ctx.lineJoin = 'round';
