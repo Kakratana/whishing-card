@@ -19,7 +19,7 @@ function prev(){
     const name = document.getElementById("name");
     name.innerHTML = inName;
 
-    ctx.drawImage(logo, 0, 0, 1280, 1280);
+    ctx.drawImage(logo, 0, 0, 1700, 2430);
 
     ctx.font = "14px 'Moul'"; 
     // ctx.fillStyle = "#2e3092";
