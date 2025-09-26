@@ -21,11 +21,11 @@ function prev(){
 
     ctx.drawImage(logo, 0, 0, 1700, 2430);
 
-    ctx.font = "70px 'Moul'"; 
-    // ctx.fillStyle = "#2e3092";
-    ctx.fillStyle = "#cc9933";
+    ctx.font = "65px 'Moul'"; 
+    // ctx.fillStyle = "#bc8f00";
+    ctx.fillStyle = "#bc8f00";
     ctx.textAlign = "center";   
-    ctx.fillText(name.innerHTML, 873, 1091);
+    ctx.fillText(name.innerHTML, 873, 1370);
 
     // // Set line join to round for the stroke
     // ctx.lineJoin = 'round';
