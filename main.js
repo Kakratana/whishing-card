@@ -21,7 +21,7 @@ function prev(){
 
     ctx.drawImage(logo, 0, 0, 1700, 2430);
 
-    ctx.font = "14px 'Moul'"; 
+    ctx.font = "70px 'Moul'"; 
     // ctx.fillStyle = "#2e3092";
     ctx.fillStyle = "#cc9933";
     ctx.textAlign = "center";   
