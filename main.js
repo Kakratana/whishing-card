@@ -1,4 +1,4 @@
-﻿const canvas = document.getElementById("result");
+const canvas = document.getElementById("result");
 const preview = document.getElementById("preview");
 preview.addEventListener("click", prev);
 
@@ -35,7 +35,7 @@ function prev(){
         ctx.drawImage(brandLogo, 0, 0, 1280, 1280); 
     }
 
-    ctx.font = "36px 'Moul'"; 
+    ctx.font = "38px 'Moul'"; 
     ctx.fillStyle = "#fff200";
     ctx.textAlign = "center";   
     ctx.fillText(name.innerHTML, 640, 670);
