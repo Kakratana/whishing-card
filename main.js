@@ -35,7 +35,7 @@ function prev(){
         ctx.drawImage(brandLogo, 0, 0, 1280, 1280); 
     }
 
-    ctx.font = "32px 'Moul'"; 
+    ctx.font = "34px 'Moul'"; 
     ctx.fillStyle = "#fff200";
     ctx.textAlign = "center";   
     ctx.fillText(name.innerHTML, 640, 670);
