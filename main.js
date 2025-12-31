@@ -31,8 +31,8 @@ function prev(){
         // Draw the logo. 
         // Arguments: image, x, y, width, height
         // Adjust these numbers to position the logo where you want it.
-        // Example: Top Right corner (1050, 50) with size 180x180
-        ctx.drawImage(brandLogo, 1050, 50, 180, 180); 
+        // Example: Top Right corner (0, 0) with size 1280x1280
+        ctx.drawImage(brandLogo, 0, 0, 1280, 1280); 
     }
 
     ctx.font = "32px 'Moul'"; 

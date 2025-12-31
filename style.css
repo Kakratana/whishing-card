@@ -76,6 +76,10 @@ input{
   appearance:none;
 }
 
+.normal-label {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 input, select{
   color:#000;
   background-color: #ffffff;
