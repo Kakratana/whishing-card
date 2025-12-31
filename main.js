@@ -19,27 +19,12 @@ function prev(){
     const name = document.getElementById("name");
     name.innerHTML = inName;
 
-    ctx.drawImage(logo, 0, 0, 1700, 2430);
+    ctx.drawImage(logo, 0, 0, 1280, 1280);
 
-    ctx.font = "65px 'Moul'"; 
-    // ctx.fillStyle = "#bc8f00";
-    ctx.fillStyle = "#bc8f00";
+    ctx.font = "32px 'Moul'"; 
+    ctx.fillStyle = "#fff200";
     ctx.textAlign = "center";   
-    ctx.fillText(name.innerHTML, 873, 1370);
-
-    // // Set line join to round for the stroke
-    // ctx.lineJoin = 'round';
-    
-    // // Draw the stroke first with the desired color and width.
-    // ctx.strokeStyle = "#c50806";
-    // ctx.lineWidth = 10; // Use a larger lineWidth to compensate for the fill covering half of it.
-    // ctx.strokeText(name.innerHTML, 640, 670);
-    
-    // // Then, draw the fill text on top of the stroke.
-    // ctx.font = "40px 'Moul'"; 
-    // ctx.fillStyle = "#fff200";
-    // ctx.textAlign = "center";  
-    // ctx.fillText(name.innerHTML, 640, 670);
+    ctx.fillText(name.innerHTML, 640, 670);
 }
 
 const download = document.getElementById("down");
