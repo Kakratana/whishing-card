@@ -9,6 +9,10 @@ const ctx = canvas.getContext("2d");
 const image = document.getElementById("imgDisplayed");
 const logo = document.getElementById("logo");
 
+// ADD THIS: Get the new logo and checkbox
+const brandLogo = document.getElementById("brandLogo");
+const chkLogo = document.getElementById("chkLogo");
+
 function prev(){
     var x = document.getElementById("form");
     x.style.display = "none";
@@ -19,7 +23,17 @@ function prev(){
     const name = document.getElementById("name");
     name.innerHTML = inName;
 
+    // Draw the background
     ctx.drawImage(logo, 0, 0, 1280, 1280);
+
+    // ADD THIS: Check if checkbox is checked and draw logo
+    if (chkLogo.checked) {
+        // Draw the logo. 
+        // Arguments: image, x, y, width, height
+        // Adjust these numbers to position the logo where you want it.
+        // Example: Top Right corner (1050, 50) with size 180x180
+        ctx.drawImage(brandLogo, 1050, 50, 180, 180); 
+    }
 
     ctx.font = "32px 'Moul'"; 
     ctx.fillStyle = "#fff200";

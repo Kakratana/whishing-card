@@ -43,6 +43,12 @@
             <h3>Wishing Card Generator</h3>
             <input name="entry.519597344" type="text" id="inSender" lang="km" placeholder="ឈ្មោះអ្នក​ផ្ញើ">
             <input name="entry.616568867" type="text" id="inName" lang="km" placeholder="ឈ្មោះអតិថិជន">
+			
+			<div style="text-align: left; width: 95%; margin: 0 auto 1em auto;">
+                <input type="checkbox" id="chkLogo" checked style="width: 20px; height: 20px; display: inline-block; margin: 0;">
+                <label for="chkLogo" style="display: inline-block; vertical-align: middle;">Add Logo</label>
+            </div>
+			
             <button type="submit" id="preview">Preview <i class="fa fa-eye" aria-hidden="true"></i></button>
         </form>
     </div>
@@ -51,6 +57,7 @@
             <li id="name"></li>
         </ul>
         <img src="./CYN2025.jpg" id="logo">
+		<img src="./Logo.png" id="brandLogo">
     </div>
     <div class="container" id="show">
         <canvas id="result" width="1280" height="1280">
