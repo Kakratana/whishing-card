@@ -36,7 +36,7 @@ function prev(){
     }
 
     ctx.font = "38px 'Moul'"; 
-    ctx.fillStyle = "#fff200";
+    ctx.fillStyle = "#ff6000";
     ctx.textAlign = "center";   
     ctx.fillText(name.innerHTML, 640, 670);
 }
