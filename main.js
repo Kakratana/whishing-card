@@ -38,7 +38,7 @@ function prev(){
     ctx.font = "38px 'Moul'"; 
     ctx.fillStyle = "#ff6000";
     ctx.textAlign = "center";   
-    ctx.fillText(name.innerHTML, 640, 670);
+    ctx.fillText(name.innerHTML, 640, 680);
 }
 
 const download = document.getElementById("down");
