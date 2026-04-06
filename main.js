@@ -45,7 +45,7 @@ function prev(){
     
     // 1. Set the outline (stroke) properties
     ctx.strokeStyle = "white"; // The color of the outline
-    ctx.lineWidth = 6;         // Adjust this number for a thicker or thinner outline
+    ctx.lineWidth = 7;      // Adjust this number for a thicker or thinner outline
     ctx.lineJoin = "round";    // Makes the corners of the outline look smoother
     
     // 2. Draw the outline first
