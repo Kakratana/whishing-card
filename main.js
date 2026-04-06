@@ -44,7 +44,7 @@ function prev(){
     ctx.textAlign = "center";
     
     // 1. Set the outline (stroke) properties
-    ctx.strokeStyle = "red"; // The color of the outline
+    ctx.strokeStyle = "white"; // The color of the outline
     ctx.lineWidth = 6;         // Adjust this number for a thicker or thinner outline
     ctx.lineJoin = "round";    // Makes the corners of the outline look smoother
     
