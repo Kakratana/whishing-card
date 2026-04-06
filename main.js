@@ -35,10 +35,27 @@ function prev(){
         ctx.drawImage(brandLogo, 0, 0, 1280, 1280); 
     }
 
+    //ctx.font = "38px 'Moul'"; 
+    //ctx.fillStyle = "#ff6000";
+    //ctx.textAlign = "center";   
+        // ... previous code (drawing images and logos)
+
     ctx.font = "38px 'Moul'"; 
+    ctx.textAlign = "center";
+    
+    // 1. Set the outline (stroke) properties
+    ctx.strokeStyle = "red"; // The color of the outline
+    ctx.lineWidth = 6;         // Adjust this number for a thicker or thinner outline
+    ctx.lineJoin = "round";    // Makes the corners of the outline look smoother
+    
+    // 2. Draw the outline first
+    ctx.strokeText(inName, 640, 680);
+
+    // 3. Set the fill color and draw the main text over the outline
     ctx.fillStyle = "#ff6000";
-    ctx.textAlign = "center";   
-    ctx.fillText(name.innerHTML, 640, 680);
+    ctx.fillText(inName, 640, 680);
+
+    //ctx.fillText(name.innerHTML, 640, 680);
 }
 
 const download = document.getElementById("down");
