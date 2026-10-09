@@ -1,98 +1,57 @@
-const canvas = document.getElementById("result");
-const preview = document.getElementById("preview");
-preview.addEventListener("click", prev);
+async function prev(event) {
+    if (event) event.preventDefault();
 
-// canvas.height = canvas.width / 1.616;
-const ctx = canvas.getContext("2d");
+    const inName = document.getElementById("inName").value.trim();
+    const font = "38px 'Moul'";
 
-
-const image = document.getElementById("imgDisplayed");
-const logo = document.getElementById("logo");
-
-// ADD THIS: Get the new logo and checkbox
-const brandLogo = document.getElementById("brandLogo");
-const chkLogo = document.getElementById("chkLogo");
-
-function prev(){
-    var x = document.getElementById("form");
-    x.style.display = "none";
-
-    var xz = document.getElementById("show");
-    xz.style.display = "block";
-    let inName = document.getElementById("inName").value;
-    const name = document.getElementById("name");
-    name.innerHTML = inName;
-
-    // Draw the background
-    ctx.drawImage(logo, 0, 0, 1280, 1280);
-
-    // ADD THIS: Check if checkbox is checked and draw logo
-    if (chkLogo.checked) {
-        // Draw the logo. 
-        // Arguments: image, x, y, width, height
-        // Adjust these numbers to position the logo where you want it.
-        // Example: Top Right corner (0, 0) with size 1280x1280
-        ctx.drawImage(brandLogo, 0, 0, 1280, 1280); 
+    // Wait for the font before measuring and drawing the name.
+    // Moul must already be declared in your page's stylesheet.
+    if (document.fonts) {
+        try {
+            await document.fonts.load(font, inName || "ក");
+        } catch (error) {
+            console.error("Could not load Moul:", error);
+            alert("The font could not load. Please try again.");
+            return;
+        }
     }
 
-    //ctx.font = "38px 'Moul'"; 
-    //ctx.fillStyle = "#ff6000";
-    //ctx.textAlign = "center";   
-        // ... previous code (drawing images and logos)
+    document.getElementById("name").textContent = inName;
 
-    ctx.font = "38px 'Moul'"; 
-    ctx.textAlign = "center";
-    
-    // 1. Set the outline (stroke) properties
-    ctx.strokeStyle = "white"; // The color of the outline
-    ctx.lineWidth = 7;      // Adjust this number for a thicker or thinner outline
-    ctx.lineJoin = "round";    // Makes the corners of the outline look smoother
-    
-    // 2. Draw the outline first
-    ctx.strokeText(inName, 640, 680);
+    // Match your original artwork size.
+    // Setting these also clears the canvas and resets its settings.
+    canvas.width = 1280;
+    canvas.height = 1280;
 
-    // 3. Set the fill color and draw the main text over the outline
+    // Draw the background.
+    ctx.drawImage(logo, 0, 0, canvas.width, canvas.height);
+
+    // Draw the optional logo.
+    if (chkLogo.checked) {
+        ctx.drawImage(brandLogo, 0, 0, canvas.width, canvas.height);
+    }
+
+    // Set the font BEFORE measuring.
+    ctx.font = font;
+    ctx.direction = "ltr";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "alphabetic";
+
+    // Center the text manually in canvas coordinates.
+    const textWidth = ctx.measureText(inName).width;
+    const textX = (canvas.width - textWidth) / 2;
+    const textY = 680;
+
+    // White outline.
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 7;
+    ctx.lineJoin = "round";
+    ctx.strokeText(inName, textX, textY);
+
+    // Orange text.
     ctx.fillStyle = "#ff6000";
-    ctx.fillText(inName, 640, 680);
+    ctx.fillText(inName, textX, textY);
 
-    //ctx.fillText(name.innerHTML, 640, 680);
+    document.getElementById("form").style.display = "none";
+    document.getElementById("show").style.display = "block";
 }
-
-const download = document.getElementById("down");
-download.addEventListener("click", function(){
-
-  if(window.navigator.msSaveBlob) {
-
-    window.navigator.msSaveBlob(canvas.msToBlob(), "Card.png");
-  } else {
-
-    const a = document.createElement("a");
-    document.body.appendChild(a);
-    a.href = canvas.toDataURL();
-    a.download = "Card.png";
-    a.click();
-    document.body.removeChild(a);
-  }
-});
-
-async function onShares() {
-
-    const dataUrl = canvas.toDataURL();
-    const blob = await (await fetch(dataUrl)).blob();
-    const filesArray = [
-        new File(
-            [blob],
-            'Card.png',
-            {
-                type: blob.type,
-                lastModified: new Date().getTime()
-            }
-        )
-    ];
-    const shareData = {
-        files: filesArray
-    };
-    navigator.share(shareData);
-}
-
-
