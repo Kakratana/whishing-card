@@ -126,12 +126,14 @@ form span{
 
 #result{
   position: relative;
-  width: 100%;
-  margin-left: 0%;
   border: 2px solid #ddd;
   border-radius: 12px;
-  margin-bottom: 1em;
   background-color: #fff;
+  display: block;
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+  margin: 0 auto;
 }
 header{
   width: 100%;
