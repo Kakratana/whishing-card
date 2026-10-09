@@ -5,7 +5,7 @@ const CARD = Object.freeze({
   width: 1280,
   height: 1280,
   nameY: 680,
-  fontSize: 38,
+  fontSize: 40,
   minFontSize: 22,
   maxTextWidth: 1080,
   fontFamily: "Moul",
@@ -15,11 +15,10 @@ const CARD = Object.freeze({
   filename: "Card.png"
 });
 
-// The original Google Form is retained as an explicit, prefilled link.
-// Preview does not submit it. The user reviews and submits in Google Forms.
-// Set url to an empty string to hide the record-form link.
+// Each successful Preview automatically posts both names to the original form.
+// Google Forms must accept public responses with these entry IDs.
 const RECORD_FORM = Object.freeze({
-  url: "https://docs.google.com/forms/d/e/1FAIpQLScnM7oYJS6iz1jGM_bRP649dM_IO6KqkFNgsbCruTZ4K6Gozw/viewform",
+  url: "https://docs.google.com/forms/d/e/1FAIpQLScnM7oYJS6iz1jGM_bRP649dM_IO6KqkFNgsbCruTZ4K6Gozw/formResponse",
   senderField: "entry.519597344",
   recipientField: "entry.616568867"
 });
@@ -38,9 +37,8 @@ const previewLabel = document.getElementById("previewLabel");
 const badge = document.getElementById("previewBadge");
 const downloadButton = document.getElementById("down");
 const shareButton = document.getElementById("share");
-const recordLink = document.getElementById("recordLink");
+const recordStatus = document.getElementById("recordStatus");
 
-let renderedRecipient = "";
 let exportBlob = null;
 let exportFile = null;
 let isRendering = false;
@@ -60,24 +58,44 @@ function invalidatePreview() {
   exportBlob = null;
   exportFile = null;
   setExportEnabled(false);
-  recordLink.hidden = true;
   if (!canvas.hidden) {
     badge.textContent = "Update preview";
     setStatus("Your details changed. Tap Preview card to update the image.");
   }
 }
 
-function updateRecordLink() {
-  if (!RECORD_FORM.url || !exportBlob) {
-    recordLink.hidden = true;
-    return;
+async function recordPreview(sender, recipient) {
+  recordStatus.hidden = false;
+  recordStatus.dataset.kind = "info";
+  recordStatus.textContent = "Sending your details…";
+  const body = new URLSearchParams();
+  body.set(RECORD_FORM.senderField, sender);
+  body.set(RECORD_FORM.recipientField, recipient);
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 20000);
+  try {
+    // A normal CORS fetch cannot read Google Forms' cross-origin response.
+    // URLSearchParams produces a standard form-encoded POST without preflight.
+    const response = await fetch(RECORD_FORM.url, {
+      method: "POST",
+      mode: "no-cors",
+      credentials: "omit",
+      body,
+      keepalive: true,
+      signal: controller.signal
+    });
+    // Opaque responses have status 0 and ok=false, even for accepted requests.
+    // They cannot prove that Google Forms saved a response, so do not say "saved".
+    if (response.type !== "opaque" && !response.ok) {
+      throw new Error("The recording request failed.");
+    }
+    recordStatus.textContent = "Recording request sent.";
+  } catch (error) {
+    recordStatus.dataset.kind = "error";
+    recordStatus.textContent = "Your card is ready, but recording could not be confirmed. Check your connection and Google Form responses before trying Preview again.";
+  } finally {
+    window.clearTimeout(timeout);
   }
-  const url = new URL(RECORD_FORM.url);
-  url.searchParams.set("usp", "pp_url");
-  url.searchParams.set(RECORD_FORM.senderField, senderInput.value.trim());
-  url.searchParams.set(RECORD_FORM.recipientField, renderedRecipient);
-  recordLink.href = url.toString();
-  recordLink.hidden = false;
 }
 
 async function waitForImage(image, label) {
@@ -175,6 +193,7 @@ async function prev(event) {
   event.preventDefault();
   if (isRendering) return;
   const recipient = nameInput.value.trim();
+  const sender = senderInput.value.trim();
   if (!recipient) {
     nameInput.setCustomValidity("Please enter a recipient name.");
     nameInput.reportValidity();
@@ -187,6 +206,7 @@ async function prev(event) {
   cardFields.disabled = true;
   cardForm.setAttribute("aria-busy", "true");
   invalidatePreview();
+  recordStatus.hidden = true;
   previewLabel.textContent = "Preparing card…";
   setStatus("Loading the artwork and Khmer font…");
 
@@ -210,13 +230,11 @@ async function prev(event) {
     exportFile = typeof File === "function"
       ? new File([exportBlob], CARD.filename, { type: "image/png", lastModified: Date.now() })
       : null;
-    renderedRecipient = recipient;
     canvas.setAttribute("aria-label", `Wishing card for ${recipient}`);
     canvas.hidden = false;
     document.getElementById("templatePreview").hidden = true;
     badge.textContent = "Ready to share";
     setExportEnabled(true);
-    updateRecordLink();
     setStatus("Your card is ready. Download it or share it with someone special.", "success");
     if (window.matchMedia("(max-width: 800px)").matches) {
       document.getElementById("show").scrollIntoView({
@@ -224,6 +242,10 @@ async function prev(event) {
         block: "start"
       });
     }
+    previewLabel.textContent = "Recording…";
+    // Keep the Preview button disabled until this request finishes to avoid
+    // accidental double submissions. Download/Share remain available.
+    await recordPreview(sender, recipient);
   } catch (error) {
     exportBlob = null;
     exportFile = null;
@@ -289,7 +311,6 @@ nameInput.addEventListener("input", () => {
   invalidatePreview();
 });
 chkLogo.addEventListener("change", invalidatePreview);
-senderInput.addEventListener("input", updateRecordLink);
 downloadButton.addEventListener("click", downloadCard);
 shareButton.addEventListener("click", onShares);
 

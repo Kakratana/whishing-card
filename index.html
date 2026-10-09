@@ -46,7 +46,7 @@
               <input type="text" id="inSender" name="sender" lang="km" dir="ltr"
                 placeholder="ឈ្មោះអ្នកផ្ញើ" maxlength="120" autocomplete="name" spellcheck="false"
                 aria-describedby="senderHint">
-              <p class="field-hint" id="senderHint">For the record form only; it is not printed on the card.</p>
+              <p class="field-hint" id="senderHint">Recorded with the recipient name when you click Preview card.</p>
 
               <label class="check-row" for="chkLogo">
                 <input type="checkbox" id="chkLogo" checked>
@@ -59,6 +59,7 @@
             </fieldset>
           </form>
           <p class="status" id="status" role="status" aria-live="polite" aria-atomic="true">Enter a recipient name to get started.</p>
+          <p class="status" id="recordStatus" role="status" aria-live="polite" aria-atomic="true" hidden></p>
           <div class="editor-footnote"><span aria-hidden="true">✧</span><p>Khmer &amp; English names<br><span>A full-quality image, ready to send.</span></p></div>
         </section>
 
@@ -75,7 +76,7 @@
             <button class="button primary" type="button" id="down" disabled><span aria-hidden="true">↓</span> Download PNG</button>
             <button class="button secondary" type="button" id="share" disabled><span aria-hidden="true">↗</span> Share image</button>
           </div>
-          <div class="preview-footer"><span>1280 × 1280 · PNG</span><a id="recordLink" target="_blank" rel="noopener noreferrer" hidden>Open record form ↗</a></div>
+          <div class="preview-footer"><span>1280 × 1280 · PNG</span></div>
           <p class="share-hint" id="shareHint">On iPhone, Share lets you save the card to Photos when supported.</p>
         </section>
       </div>

@@ -18,7 +18,9 @@ No build step, npm packages, database, or backend is required.
 
 4. Open http://localhost:8000 in your browser.
 5. Enter a recipient name, choose whether to include the logos, and click
-   **Preview card**. Then download the PNG or use **Share image**.
+   **Preview card**. The card is generated and the sender and recipient names
+   are automatically submitted to the Google Form. Then download the PNG or
+   use **Share image**.
 
 Use a web server rather than double-clicking the HTML file: local `file://`
 pages can have browser-specific font and canvas export restrictions.
@@ -44,9 +46,9 @@ No deployment has been performed for you.
 | `fonts/Siemreap.ttf` | Khmer form text font |
 | `fonts/*-OFL.txt` | Font licenses |
 
-All card generation takes place in the browser. The artwork and fonts are
-included locally. Preview and download do not require an external service
-after the project files have loaded.
+All image generation takes place in the browser using the bundled artwork
+and fonts. Automatic Google Form recording requires an internet connection.
+A recording error does not prevent downloading or sharing the generated card.
 
 ## What changed
 
@@ -74,14 +76,34 @@ after the project files have loaded.
 The original Google Form address and both field IDs are retained in
 `RECORD_FORM` near the top of `main.js`.
 
-The original page attempted a cross-origin form submission whenever Preview
-was clicked. This version uses a separate **Open record form** link after a
-successful preview. It opens the original form with recipient and sender
-prefilled; the user reviews and submits it in Google Forms. The app does not
-automatically submit names or claim that a record has been saved.
+Each valid **Preview card** submission creates the image and automatically
+sends a form-encoded POST to the original `/formResponse` endpoint. There is
+no separate recording button or Google Form window. The fields are:
 
-The form's availability and permissions were not tested, and no live form
-submission was made. Set `RECORD_FORM.url` to `""` if you want to hide this link.
+| Value | Google Form field |
+| --- | --- |
+| Sender name | `entry.519597344` |
+| Recipient name | `entry.616568867` |
+
+One request is sent for each successfully generated preview. Preview stays
+disabled while that request is pending to prevent accidental double clicks.
+Clicking Preview again after it finishes submits another response, even if
+the names have not changed. Blank/invalid recipient names and failed card
+generation do not submit anything. Downloads and Share do not submit again.
+
+The request uses `fetch` with `mode: "no-cors"`, so Google Forms' response is
+opaque: browser JavaScript cannot inspect its success message or HTTP status.
+The page therefore says **Recording request sent**, not that saving is
+confirmed. A connection error or 20-second timeout shows a recording message
+while keeping the card available. No automatic retries are made because the
+server may already have received the submission.
+
+The Google Form must be open for responses and accessible without signing
+in, with these field IDs and no unmet required questions. Sender is optional
+in this app; if it is required in Google Forms, add `required` to `inSender`
+in `index.html`. Check the form's Responses tab after your first real preview
+to verify recording. Automated checks intercepted requests locally and did
+not create test responses in your live Google Form.
 
 ## Customize
 
@@ -109,8 +131,10 @@ from the rendered pixels and centered at x = 640. The downloaded PNG was
 verified as 1280 × 1280. Logo toggling, empty/overlong names, missing font and
 image errors, export invalidation, and keyboard submission were checked.
 Share activation/cancellation used a stub (no image was sent), and the
-unsupported-share download fallback was checked. The record form was not
-opened or submitted. Safari/WebKit could not run in this environment because
+unsupported-share download fallback was checked. Automatic recording was
+checked with intercepted requests, including field encoding, one POST per
+preview, double-click prevention, and connection errors; no test responses
+were sent to the live form. Safari/WebKit could not run in this environment because
 its system dependencies were unavailable; physical iPhone testing remains.
 
 ## iPhone check
@@ -131,5 +155,6 @@ their SIL Open Font Licenses:
 - Safari complex-script alignment issue: https://bugs.webkit.org/show_bug.cgi?id=316235
 - Font loading: https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load
 - File sharing: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
+- Cross-origin requests: https://developer.mozilla.org/en-US/docs/Web/API/Request/mode
 
 The supplied artwork and logos remain the user's assets.
